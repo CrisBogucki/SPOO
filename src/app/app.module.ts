@@ -29,7 +29,7 @@ import {SessionService} from './@core/services/session.service';
     AppConfig, SessionConfig, SessionService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpJwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true},
-    {provide: LocationStrategy, useClass: PathLocationStrategy},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     {provide: APP_BASE_HREF, useValue: environment.app_base_href},
   ],
   exports: [HttpClientModule],
