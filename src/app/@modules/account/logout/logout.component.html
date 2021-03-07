@@ -1,0 +1,37 @@
+<div class="main">
+    <div class="columns">
+        <div class="background-column column is-hidden-mobile has-background-white-ter"
+             style="background-image: url('./assets/background.jpg');">
+            <div class="container is-fluid has-text-right">
+              <h1 class="title is-1 has-text-white text-border">{{ appConfig.appName }}</h1>
+              <h2 class="subtitle is-2 has-text-white text-border">{{ appConfig.appDescript }}</h2>
+              <h4 class="subtitle is-3 has-text-white text-border">{{ appConfig.appDescriptSubline1 }}</h4>
+              <h2 class="subtitle is-4 has-text-white text-border">{{ appConfig.appDescriptSubline2 }}</h2>
+              <p class="has-text-white text-border"> {{ appConfig.appVersion }}</p>
+            </div>
+        </div>
+        <div class="form-column column is-mobile is-fifths-tablet is-two-quarter-desktop is-one-quarter-fullhd">
+            <div class="container is-fluid">
+                <section class="section">
+                    <div id="login-form">
+                        <div class="has-text-centered">
+                            <h1 class="title is-3 is-spaced has-text-grey-dark has-text-weight-semibold">Wylogowanie</h1>
+                            <p class="subtitle is-6 has-text-grey has-text-weight-light">Wylogowano poprawnie z konta</p>
+                        </div>
+                        <br><br>
+                        <div class="notification has-text-centered is-hidden"></div>
+                    </div>
+                    <div class="has-text-centered">
+                        <br>
+                        <a class="has-text-grey" routerLink="/account/login">Zaloguj się ponownie</a>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+

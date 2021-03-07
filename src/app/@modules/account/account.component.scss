@@ -1,0 +1,33 @@
+.main {
+  height: 100vh;
+
+  .columns {
+    height: 100vh;
+    margin-top: 0;
+
+    .background-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-position: center center;
+      background-size: cover;
+
+      .container {
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+
+    }
+
+    .form-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+
+.text-border{
+  text-shadow: 2px 2px 10px #000;
+}
