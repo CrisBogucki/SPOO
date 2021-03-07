@@ -1,6 +1,7 @@
-# spoo
+# SPoO
+System Powiadomień o Opłatach
 
- - [ ] 1.Rejestracja skladnikow i jego wartosci w danym czasie 
+ - [ ] Rejestracja skladnikow i jego wartosci w danym czasie 
  - [ ] rejestracja konsumentow w/w skladnikow
  - [ ] raportowanie w czasie i zamykanie opłat
     - [ ] ustawienia statusu opłaty
