@@ -1,7 +1,7 @@
 # SPoO
 System Powiadomień o Opłatach
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/795bf3db-c89d-4340-ae60-ffa8bab5e7a3/deploy-status)](https://app.netlify.com/sites/spoo/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/795bf3db-c89d-4340-ae60-ffa8bab5e7a3/deploy-status)](https://spoo.netlify.com)
 
 
  - [ ] Rejestracja skladnikow i jego wartosci w danym czasie 
