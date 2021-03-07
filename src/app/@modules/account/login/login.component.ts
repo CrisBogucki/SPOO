@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
                 },
                 error => {
                     this.isSubmit = false;
-                    this.errorMessage = error;
+                    this.errorMessage = error.error.message;
                 });
 
     }

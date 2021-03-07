@@ -1,0 +1,14 @@
+[
+  {
+    "id": 0,
+    "code": "OP-PRZ",
+    "name": "Opłata za przedszkole",
+    "description": "Miesięczna opłata za przedszkole"
+  },
+  {
+    "id": 1,
+    "code": "OP-OBI",
+    "name": "Opłata za obiady",
+    "description": "Miesięczna opłata za obiady w przedszkolu"
+  }
+]
