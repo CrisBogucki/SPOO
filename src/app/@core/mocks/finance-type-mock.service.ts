@@ -22,20 +22,22 @@ export class FinanceTypesMockService implements HttpInterceptor {
     const authHeader = request.headers.get('Authorization');
     const isLoggedIn = authHeader && authHeader.startsWith('Bearer fake-jwt-token');
 
+
     return of(null).pipe(mergeMap(() => {
-
-      if (!isLoggedIn) {
-        return this.request.unauthorised();
-      }
-
       // get all
       if (request.url.endsWith('/finance/type') && request.method === 'GET') {
+        if (!isLoggedIn) {
+          return this.request.unauthorised();
+        }
         const types = TYPES.sort((a, b) => a.name.localeCompare(b.name));
         return this.request.ok(types);
       }
 
       // add
       if (request.url.endsWith('/finance/type') && request.method === 'POST') {
+        if (!isLoggedIn) {
+          return this.request.unauthorised();
+        }
         const body: FinanceType = request.body;
         body.id = getMaxId();
         TYPES.push(body);
@@ -44,6 +46,9 @@ export class FinanceTypesMockService implements HttpInterceptor {
 
       // delete
       if (request.url.endsWith('/finance/type/delete') && request.method === 'POST') {
+        if (!isLoggedIn) {
+          return this.request.unauthorised();
+        }
         const body: FinanceType = request.body;
         const index = TYPES.indexOf(body);
         TYPES.splice(index, 1);
@@ -52,6 +57,9 @@ export class FinanceTypesMockService implements HttpInterceptor {
 
       // edit
       if (request.url.endsWith('/finance/type') && request.method === 'PUT') {
+        if (!isLoggedIn) {
+          return this.request.unauthorised();
+        }
         const body: FinanceType = request.body;
         TYPES.find((field) => field.id === body.id).name = body.name;
         TYPES.find((field) => field.id === body.id).name = body.description;
@@ -62,7 +70,7 @@ export class FinanceTypesMockService implements HttpInterceptor {
       return next.handle(request);
     }))
       .pipe(materialize())
-      .pipe(delay(2500))
+      .pipe(delay(500))
       .pipe(dematerialize());
 
     // private functions

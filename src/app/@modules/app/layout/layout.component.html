@@ -35,14 +35,11 @@
           </a>
         </div>
       </div>
-
-
-
-
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
+        <span style="padding-right: 15px;">Witaj <b style="font-weight: bold">{{ user.firstName }} {{ user.lastName }}</b></span>
         <div class="buttons">
           <a class="button is-light" [routerLink]="['./../account/logout']">
             Wyloguj
@@ -62,7 +59,7 @@
         Ogólne
       </p>
       <ul class="menu-list">
-        <li><a class="is-active">Pulpit</a></li>
+        <li><a routerLinkActive="is-active" routerLink="./dashboard">Pulpit</a></li>
       </ul>
 
       <p class="menu-label">
@@ -71,7 +68,7 @@
       <ul class="menu-list">
         <li><a>Listy płatności</a></li>
         <li><a></a></li>
-        <li><a>Typ</a></li>
+        <li><a routerLinkActive="is-active" routerLink="./finance-type">Typ</a></li>
       </ul>
 
       <p class="menu-label">
@@ -83,10 +80,8 @@
       </ul>
     </aside>
   </div>
-  <div class="column is-main-content">
-    Main content
-
+  <div class="column is-main-content padding">
     <router-outlet></router-outlet>
-
   </div>
 </div>
+

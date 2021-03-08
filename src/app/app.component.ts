@@ -1,13 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {AppConfig} from './@config/app.config';
 
 @Component({
-    selector: 'app-root',
-    template: '<router-outlet></router-outlet>'
+  selector: 'app-root',
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent implements OnInit {
 
-    ngOnInit(): void {
-        // TODO: Dodac obsluge sessji jesli zalogowany to przehodzi do app component
-    }
+  appConfig: AppConfig;
+
+  constructor(@Inject(AppConfig) appConfig) {
+    this.appConfig = appConfig;
+  }
+
+
+  ngOnInit(): void {
+    document.title = this.appConfig.appName;
+  }
 
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {Observable, of, throwError} from 'rxjs';
+import {HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
 import {delay, mergeMap, materialize, dematerialize} from 'rxjs/operators';
 
 import {User} from '../../@shared/models/user.model';
@@ -22,10 +22,8 @@ export class AuthorizationMockService implements HttpInterceptor {
     const authHeader = request.headers.get('Authorization');
     const isLoggedIn = authHeader && authHeader.startsWith('Bearer fake-jwt-token');
 
-    // wrap in delayed observable to simulate server api call
     return of(null).pipe(mergeMap(() => {
 
-      // authenticate - public
       if (request.url.endsWith('/account/authenticate') && request.method === 'POST') {
         const user = users.find(x => x.username === request.body.username && x.password === request.body.password);
         if (!user) {
@@ -40,7 +38,6 @@ export class AuthorizationMockService implements HttpInterceptor {
         });
       }
 
-      // authenticate - public
       if (request.url.endsWith('/account/forgot') && request.method === 'POST') {
         const user = users.find(x => x.username === request.body.username);
         if (!user) {
@@ -51,7 +48,6 @@ export class AuthorizationMockService implements HttpInterceptor {
         });
       }
 
-      // get all users
       if (request.url.endsWith('/users') && request.method === 'GET') {
         if (!isLoggedIn) {
           return this.request.unauthorised();
@@ -63,7 +59,7 @@ export class AuthorizationMockService implements HttpInterceptor {
       return next.handle(request);
     }))
       .pipe(materialize())
-      .pipe(delay(2500))
+      .pipe(delay(500))
       .pipe(dematerialize());
   }
 }

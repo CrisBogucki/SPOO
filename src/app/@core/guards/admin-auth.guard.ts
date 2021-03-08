@@ -20,9 +20,9 @@ export class AdminAuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const currentUser = this.authenticationService.currentUserValue;
+    const currentUser = this.authenticationService.currentUserSubject;
 
-    if (currentUser && this.isAdmin(currentUser.username)) {
+    if (currentUser && this.isAdmin(currentUser.value.username)) {
       return true;
     }
 

@@ -12,7 +12,7 @@ import {SessionService} from './session.service';
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
 
-  private currentUserSubject: BehaviorSubject<User>;
+  currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
   private sessionConfig: SessionConfig;
@@ -22,26 +22,28 @@ export class AuthenticationService {
     private http: HttpClient,
     @Inject(SessionConfig) sessionConfig,
     @Inject(SessionService) sessionService) {
+
     this.sessionConfig = sessionConfig;
     this.sessionService = sessionService;
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(SessionService.get(SessionConfig.currentUser)));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+  getUserObservable(): Observable<User> {
+    return this.currentUser;
   }
-
 
   login(username: string, password: string) {
     return this.http.post<User>(`${environment.apiUrl}/account/authenticate`, {username, password})
-      .pipe(map(user => {
-        if (user && user.token) {
-          SessionService.set(SessionConfig.currentUser, JSON.stringify(user));
-          this.currentUserSubject.next(user);
-        }
-        return user;
-      }));
+      .pipe(
+        map(user => {
+          if (user && user.token) {
+            user.username = username;
+            SessionService.set(SessionConfig.currentUser, JSON.stringify(user));
+            this.currentUserSubject.next(user);
+          }
+        })
+      );
   }
 
   forgot(username: string) {
@@ -56,6 +58,5 @@ export class AuthenticationService {
     SessionService.clear();
     this.currentUserSubject.next(null);
   }
-
 
 }

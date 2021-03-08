@@ -32,5 +32,6 @@ $navbar-height: 3.25rem;
 }
 
 .is-main-content {
-  background: $grey-lighter;
+  border-top: 13px solid $grey-lighter;
+  background: $white
 }

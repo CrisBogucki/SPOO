@@ -1,1 +1,50 @@
-<p>finance-type works!</p>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="#">Start</a></li>
+    <li><a href="#">Płatności</a></li>
+    <li class="is-active"><a href="#" aria-current="page">Typ</a></li>
+  </ul>
+</nav>
+
+<h1 class="title">Typ płatności</h1>
+<h2 class="subtitle">Jednostkowy składnik płatności za jaki generowane jest obciązenie</h2>
+
+<span class="button is-small">
+  <i class="fa fa-refresh"></i> Odśwież
+</span>
+<span class="button is-small">
+  <i class="fa fa-plus"></i> Dodaj
+</span>
+<div class="is-clearfix"></div>
+<table class="table">
+  <thead>
+  <tr>
+    <th class="has-text-weight-bold" style="width: 40px">Lp.</th>
+    <th class="has-text-weight-bold">Kod</th>
+    <th class="has-text-weight-bold">Nazwa</th>
+    <th class="has-text-weight-bold">Opis</th>
+    <th class="has-text-weight-bold" style="width: 130px">Akcje</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <tr *ngFor="let ft of finanseType$ | async; index as i; trackBy: trackByFn">
+    <th>{{i + 1}}</th>
+    <td><span class="tag">{{ft.code}}</span></td>
+    <td>{{ft.name}}</td>
+    <td>{{ft.description}}</td>
+    <td>
+      <span class="button is-small">
+        <i class="fa fa-pencil"></i>
+      </span>
+      <span class="button is-small">
+        <i class="fa fa-times"></i>
+      </span>
+      <span class="button is-small">
+        <i class="fa fa-save"></i>
+      </span>
+    </td>
+  </tr>
+  </tbody>
+</table>
