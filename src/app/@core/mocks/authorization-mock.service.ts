@@ -41,7 +41,7 @@ export class AuthorizationMockService implements HttpInterceptor {
       if (request.url.endsWith('/account/forgot') && request.method === 'POST') {
         const user = users.find(x => x.username === request.body.username);
         if (!user) {
-          return this.request.error('Username is not exist');
+          return this.request.error(`Brak użytkownika w bazie`);
         }
         return this.request.ok({
           password: user.password
