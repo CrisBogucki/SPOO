@@ -47,7 +47,7 @@ export class ForgotComponent implements OnInit, AfterViewInit {
             .subscribe(
                 data => {
                     this.isSubmit = false;
-                    this.errorMessage = `Twoje hasło to?: ${data.password}`;
+                    this.errorMessage = `Twoje hasło : ${data.password} `;
                 },
                 error => {
                     this.isSubmit = false;

@@ -1,0 +1,35 @@
+<div *ngIf="message" [class]="!isActive ? 'modal is-active modal-fx-fadeInScale' : 'modal'">
+  <div class="modal-background"></div>
+  <div class="modal-content" *ngIf="message?.type == 'confirm'">
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p class="has-text-centered">
+              <strong>{{message.title}}</strong>
+              <br>
+              {{message.text}}
+            </p>
+          </div>
+          <div class="buttons columns is-fullheight">
+            <div class="column is-4 is-offset-2">
+              <button class="button is-small is-info is-rounded is-outlined is-fullwidth" (click)="message.yesFn(); isActive = false">
+                  <span class="icon">
+                    <i class="fa fa-check"></i>
+                  </span>
+                <span>TAK</span>
+              </button>
+            </div>
+
+            <div class="column is-4">
+              <button class="button is-small is-primary is-rounded is-outlined is-fullwidth" (click)="message.noFn(); isActive = false">
+                <span>NIE</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

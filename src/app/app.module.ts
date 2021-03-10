@@ -10,16 +10,17 @@ import {AppConfig} from './@config/app.config';
 import {environment} from '../environments/environment';
 
 import {AppRoutingModule} from './app-routing.module';
+
 import {AppComponent} from './app.component';
 import {SessionConfig} from './@config/session.config';
 import {SessionService} from './@core/services/session.service';
 import {AuthorizationMockService, FinanceTypesMockService, RequestMethodService} from './@core/mocks/mocks';
 
+
 @NgModule({
   declarations: [
     AppComponent,
   ],
-
   providers: [
     AppConfig, SessionConfig, SessionService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpJwtInterceptor, multi: true},

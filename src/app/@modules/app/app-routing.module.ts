@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {LayoutComponent} from './layout/layout.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FinanceTypeComponent} from './finance-type/finance-type.component';
+import {FinanceTypeValueComponent} from './finance-type-value/finance-type-value.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
       [
         {path: 'dashboard', component: DashboardComponent},
         {path: 'finance-type', component: FinanceTypeComponent},
+        {path: 'finance-type-value', component: FinanceTypeValueComponent},
         {path: '', redirectTo: 'dashboard'}
       ]
   }

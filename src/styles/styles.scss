@@ -1,12 +1,14 @@
 @import './colors';
 
 
-
-
-.table{
+.table {
   width: 99%;
 }
 
-.breadcrumb{
+.table tr:hover {
+  background: $primary;
+}
+
+.breadcrumb {
   margin-top: 20px;
 }

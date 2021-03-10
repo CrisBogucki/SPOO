@@ -23,7 +23,7 @@ export class AllAuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const currentUser = this.authenticationService.currentUserSubject;
 
-    if (currentUser && this.isRegister(currentUser.value.username)) {
+    if (currentUser && currentUser.value && this.isRegister(currentUser.value.username)) {
       return true;
     }
 
