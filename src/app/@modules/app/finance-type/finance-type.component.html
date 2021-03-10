@@ -43,7 +43,7 @@
 
   <tbody>
 
-  <tr *ngFor="let item of finanseType$ | async; index as i; trackBy: trackByFn">
+  <tr *ngFor="let item of finanseType$ | async; let editable = false; index as i; trackBy: trackByFn">
     <th>{{i + 1}}</th>
     <td>
       <span class="tag" *ngIf="!item['editable']">{{item.code}}</span>
@@ -61,7 +61,7 @@
     <td>
 
       <p class="buttons">
-        <button *ngIf="item['editable']" class="button is-small is-info is-outlined"
+        <button *ngIf="item['editable']" class="button is-small is-info"
                 (click)="item['editable']=null; onUpdateRow(item);">
           <span class="icon">
             <i class="fa fa-save"></i>
@@ -69,15 +69,20 @@
           <span>Zapisz</span>
         </button>
 
-        <button *ngIf="!item['editable']" class="button is-small is-info is-outlined"
-                (click)="item['editable']=true">
+        <button *ngIf="item['editable']" class="button is-small is-info is-outlined"
+                (click)="onCancelAndRemoveRow(item)">
+          <span>Anuluj</span>
+        </button>
+
+        <button *ngIf="!item['editable'] " class="button is-small is-info is-outlined"
+                (click)="item['editable']=true; item['editableWithOutRemove']=true">
           <span class="icon">
             <i class="fa fa-pencil"></i>
           </span>
           <span>Edytuj</span>
         </button>
 
-        <button class="button is-small is-danger is-outlined" (click)="onRemoveRow(item)">
+        <button *ngIf="!item['editable']" class="button is-small is-danger is-outlined" (click)="onRemoveRow(item)">
           <span class="icon">
             <i class="fa fa-times"></i>
           </span>
@@ -89,5 +94,3 @@
   </tr>
   </tbody>
 </table>
-
-<app-modal></app-modal>

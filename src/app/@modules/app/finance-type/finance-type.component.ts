@@ -28,26 +28,35 @@ export class FinanceTypeComponent implements OnInit {
     this.financeService.addFinanceType().subscribe();
   }
 
-  onUpdateRow(obj) {
-    this.financeService.updateFinanceType(obj).subscribe();
+  onUpdateRow(item: FinanceType) {
+    this.financeService.updateFinanceType(item).subscribe();
   }
 
-  onRemoveRow(obj) {
+  onRemoveRow(item: FinanceType) {
     this.dialogService.confirmYesNo('Usunąć', 'Czy usunąć rekord?',
       () => {
-        this.financeService.removeFinanceType(obj).subscribe();
+        this.financeService.removeFinanceType(item).subscribe();
       },
       () => {
       });
   }
+
+  onCancelAndRemoveRow(item: FinanceType) {
+    if (item['editableWithOutRemove'] === true) {
+      item['editable'] = false;
+      item['editableWithOutRemove'] = true;
+    } else {
+      this.financeService.removeFinanceType(item).subscribe();
+    }
+  }
+
 
   getFinanceType() {
     this.finanseType$ = this.financeService.getFinanceType().pipe(map(req => req));
   }
 
   trackByFn(index, item) {
-    return index; // or item.id
+    return index;
   }
-
 
 }

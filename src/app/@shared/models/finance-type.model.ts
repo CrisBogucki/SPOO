@@ -3,7 +3,6 @@ export class FinanceType {
   code: string;
   name: string;
   description: string;
-  editable: boolean | false;
 
   constructor(code: string, name: string, description: string) {
     this.code = code;
