@@ -1,0 +1,97 @@
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><a routerLink="./../dashboard">Start</a></li>
+    <li><a routerLink="./../finance-in-time">Płatności</a></li>
+    <li class="is-active"><a>Wysokość opłaty</a></li>
+  </ul>
+</nav>
+
+<h1 class="title">Wysokość opłaty</h1>
+<h2 class="subtitle">Wysokość opłaty w danym czasie</h2>
+
+<p class="buttons">
+  <button
+    [class]="(finanseType$ | async) !== null ? 'button is-small is-info is-outlined' : 'button is-small is-info is-outlined is-loading' "
+    (click)="onRefresh()">
+    <span class="icon">
+      <i class="fa fa-refresh"></i>
+    </span>
+    <span>Odśwież</span>
+  </button>
+
+  <button class="button is-small is-info is-outlined"
+          (click)="onAddRow()">
+    <span class="icon">
+      <i class="fa fa-plus"></i>
+    </span>
+    <span>Dodaj</span>
+  </button>
+</p>
+
+
+<div class="is-clearfix"></div>
+<table class="table">
+  <thead>
+  <tr>
+    <th class="has-text-weight-bold" style="width: 40px">Lp.</th>
+    <th class="has-text-weight-bold">Opłata</th>
+    <th class="has-text-weight-bold">Wysokość</th>
+    <th class="has-text-weight-bold">Obowiązuje od </th>
+    <th class="has-text-weight-bold">Obowiązuje do </th>
+    <th class="has-text-weight-bold" style="width: 180px">Akcje</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <tr *ngFor="let item of finanseType$ | async; let editable = false; index as i; trackBy: trackByFn">
+    <th>{{i + 1}}</th>
+    <td>
+      <span class="tag" *ngIf="!item['editable']">{{item.code}}</span>
+      <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.code" required></span>
+    </td>
+    <td>
+      <span *ngIf="!item['editable']">{{item.name}}</span>
+      <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.name" required></span>
+    </td>
+    <td>
+      <span *ngIf="!item['editable']">{{item.description}}</span>
+      <span *ngIf="item['editable']"><input [class]="item.description !== '' ? 'input' : 'input is-danger'"
+                                            class="input" type="text" [(ngModel)]="item.description" required></span>
+    </td>
+    <td>
+
+      <p class="buttons">
+        <button *ngIf="item['editable']" class="button is-small is-info"
+                (click)="item['editable']=null; onUpdateRow(item);">
+          <span class="icon">
+            <i class="fa fa-save"></i>
+          </span>
+          <span>Zapisz</span>
+        </button>
+
+        <button *ngIf="item['editable']" class="button is-small is-info is-outlined"
+                (click)="onCancelAndRemoveRow(item)">
+          <span>Anuluj</span>
+        </button>
+
+        <button *ngIf="!item['editable'] " class="button is-small is-info is-outlined"
+                (click)="item['editable']=true; item['editableWithOutRemove']=true">
+          <span class="icon">
+            <i class="fa fa-pencil"></i>
+          </span>
+          <span>Edytuj</span>
+        </button>
+
+        <button *ngIf="!item['editable']" class="button is-small is-danger is-outlined" (click)="onRemoveRow(item)">
+          <span class="icon">
+            <i class="fa fa-times"></i>
+          </span>
+          <span>Usuń</span>
+        </button>
+      </p>
+
+    </td>
+  </tr>
+  </tbody>
+</table>

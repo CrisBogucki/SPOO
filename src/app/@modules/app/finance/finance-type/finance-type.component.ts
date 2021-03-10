@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FinanceService} from '../../../@core/services/finance.service';
+import {FinanceService} from '../../../../@core/services/finance.service';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {FinanceType} from '../../../@shared/models/finance-type.model';
-import {DialogService} from '../../../@shared/components/modal/dialog.service';
+import {FinanceType} from '../../../../@shared/models/finance-type.model';
+import {DialogService} from '../../../../@shared/components/modal/dialog.service';
 
 @Component({
   selector: 'app-finance-type',
