@@ -43,8 +43,7 @@ export class FinanceTypeComponent implements OnInit {
 
   onCancelAndRemoveRow(item: FinanceType) {
     if (item['editableWithOutRemove'] === true) {
-      item['editable'] = false;
-      item['editableWithOutRemove'] = true;
+      item.editable = false;
     } else {
       this.financeService.removeFinanceType(item).subscribe();
     }
