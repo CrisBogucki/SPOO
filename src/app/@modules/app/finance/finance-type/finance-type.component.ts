@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FinanceService} from '../../../../@core/services/finance.service';
+import {FinanceTypeService} from '../../../../@core/services/finance-type.service';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {FinanceType} from '../../../../@shared/models/finance-type.model';
@@ -13,29 +13,29 @@ export class FinanceTypeComponent implements OnInit {
 
   finanseType$: Observable<Array<FinanceType>>;
 
-  constructor(private financeService: FinanceService, private dialogService: DialogService) {
+  constructor(private financeTypeService: FinanceTypeService, private dialogService: DialogService) {
   }
 
   ngOnInit() {
-    this.getFinanceType();
+    this.get();
   }
 
   onRefresh() {
-    this.getFinanceType();
+    this.get();
   }
 
   onAddRow() {
-    this.financeService.addFinanceType().subscribe();
+    this.financeTypeService.add().subscribe();
   }
 
   onUpdateRow(item: FinanceType) {
-    this.financeService.updateFinanceType(item).subscribe();
+    this.financeTypeService.update(item).subscribe();
   }
 
   onRemoveRow(item: FinanceType) {
     this.dialogService.confirmYesNo('Usunąć', 'Czy usunąć rekord?',
       () => {
-        this.financeService.removeFinanceType(item).subscribe();
+        this.financeTypeService.remove(item).subscribe();
       },
       () => {
       });
@@ -45,13 +45,13 @@ export class FinanceTypeComponent implements OnInit {
     if (item['editableWithOutRemove'] === true) {
       item.editable = false;
     } else {
-      this.financeService.removeFinanceType(item).subscribe();
+      this.financeTypeService.remove(item).subscribe();
     }
   }
 
 
-  getFinanceType() {
-    this.finanseType$ = this.financeService.getFinanceType().pipe(map(req => req));
+  get() {
+    this.finanseType$ = this.financeTypeService.get().pipe(map(req => req));
   }
 
   trackByFn(index, item) {

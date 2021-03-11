@@ -14,7 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SessionConfig} from './@config/session.config';
 import {SessionService} from './@core/services/session.service';
-import {AuthorizationMockService, FinanceTypesMockService, RequestMethodService} from './@core/mocks/mocks';
+import {AuthorizationMockService, FinanceTypesMockService, FinanceTypesValueMockService, RequestMethodService} from './@core/mocks/mocks';
 
 
 @NgModule({
@@ -31,6 +31,7 @@ import {AuthorizationMockService, FinanceTypesMockService, RequestMethodService}
     RequestMethodService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthorizationMockService, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: FinanceTypesMockService, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: FinanceTypesValueMockService, multi: true},
   ],
   imports: [
     BrowserModule,

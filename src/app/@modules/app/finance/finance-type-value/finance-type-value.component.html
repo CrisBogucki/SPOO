@@ -11,7 +11,7 @@
 
 <p class="buttons">
   <button
-    [class]="(finanseType$ | async) !== null ? 'button is-small is-info is-outlined' : 'button is-small is-info is-outlined is-loading' "
+    [class]="(finanseTypeValue$ | async) !== null ? 'button is-small is-info is-outlined' : 'button is-small is-info is-outlined is-loading' "
     (click)="onRefresh()">
     <span class="icon">
       <i class="fa fa-refresh"></i>
@@ -36,28 +36,40 @@
     <th class="has-text-weight-bold" style="width: 40px">Lp.</th>
     <th class="has-text-weight-bold">Opłata</th>
     <th class="has-text-weight-bold">Wysokość</th>
-    <th class="has-text-weight-bold">Obowiązuje od </th>
-    <th class="has-text-weight-bold">Obowiązuje do </th>
+    <th class="has-text-weight-bold">Obowiązuje od</th>
+    <th class="has-text-weight-bold">Obowiązuje do</th>
     <th class="has-text-weight-bold" style="width: 180px">Akcje</th>
   </tr>
   </thead>
 
   <tbody>
 
-  <tr *ngFor="let item of finanseType$ | async; let editable = false; index as i; trackBy: trackByFn">
+  <tr *ngFor="let item of finanseTypeValue$ | async; let editable = false; index as i; trackBy: trackByFn">
     <th>{{i + 1}}</th>
     <td>
-      <span class="tag" *ngIf="!item['editable']">{{item.code}}</span>
-      <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.code" required></span>
+      <span class="tag" *ngIf="!item['editable']">{{item?.type?.code}} </span>
+      <span *ngIf="!item['editable']"> {{item?.type?.name}}</span>
+
+      <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.type" required></span>
     </td>
     <td>
-      <span *ngIf="!item['editable']">{{item.name}}</span>
-      <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.name" required></span>
+      <span *ngIf="!item['editable']">{{item.value}}</span>
+      <span *ngIf="item['editable']">
+        <input [class]="item.value !== '' ? 'input' : 'input is-danger'" type="text" [(ngModel)]="item.value" required>
+      </span>
     </td>
     <td>
-      <span *ngIf="!item['editable']">{{item.description}}</span>
-      <span *ngIf="item['editable']"><input [class]="item.description !== '' ? 'input' : 'input is-danger'"
-                                            class="input" type="text" [(ngModel)]="item.description" required></span>
+      <span *ngIf="!item['editable']">{{item.valFrom}}</span>
+      <span *ngIf="item['editable']">
+        <input [class]="item.valFrom !== '' ? 'input' : 'input is-danger'" type="text" [(ngModel)]="item.valFrom"
+               required>
+      </span>
+    </td>
+    <td>
+      <span *ngIf="!item['editable']">{{item.valTo}}</span>
+      <span *ngIf="item['editable']">
+        <input [class]="item.valTo !== '' ? 'input' : 'input is-danger'" type="text" [(ngModel)]="item.valTo" required>
+      </span>
     </td>
     <td>
 

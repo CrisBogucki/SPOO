@@ -3,30 +3,29 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
 import {FinanceType} from '../../@shared/models/finance-type.model';
-import {Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
-export class FinanceService {
+export class FinanceTypeService {
 
   constructor(private http: HttpClient) {
   }
 
-  getFinanceType() {
+  get() {
     return this.http
       .get<Array<FinanceType>>(`${environment.apiUrl}/finance/type`)
       .pipe(map(req => req));
   }
 
-  addFinanceType() {
+  add() {
     return this.http.post(`${environment.apiUrl}/finance/type`, {});
   }
 
-  updateFinanceType(obj) {
-    return this.http.put(`${environment.apiUrl}/finance/type`, obj);
+  update(item) {
+    return this.http.put(`${environment.apiUrl}/finance/type`, item);
   }
 
-  removeFinanceType(obj) {
-    return this.http.post(`${environment.apiUrl}/finance/type/delete`, obj);
+  remove(item) {
+    return this.http.post(`${environment.apiUrl}/finance/type/delete`, item);
   }
 
 
