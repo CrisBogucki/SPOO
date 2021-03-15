@@ -30,4 +30,30 @@
       </article>
     </div>
   </div>
+
+  <div class="modal-content" *ngIf="message?.type == 'dialogOk'">
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p class="has-text-centered">
+              <strong>{{message.title}}</strong>
+              <br>
+              {{message.text}}
+            </p>
+          </div>
+          <div class="buttons columns is-fullheight">
+            <div class="column is-4 is-offset-4">
+              <button class="button is-small is-info  is-fullwidth" (click)="message.okFn(); isActive = false">
+                  <span class="icon">
+                    <i class="fa fa-check"></i>
+                  </span>
+                <span>OK</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
 </div>

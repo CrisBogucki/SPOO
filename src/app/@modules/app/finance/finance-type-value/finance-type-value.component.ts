@@ -38,7 +38,7 @@ export class FinanceTypeValueComponent implements OnInit {
   }
 
   onRemoveRow(item: FinanceTypeValue) {
-    this.dialogService.confirmYesNo('Usunąć', 'Czy usunąć rekord?',
+    this.dialogService.dialogYesNo('Usunąć', 'Czy usunąć rekord?',
       () => {
         this.financeTypeValueService.remove(item).subscribe();
       },

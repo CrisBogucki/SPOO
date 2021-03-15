@@ -33,10 +33,13 @@
             ],
             "styles": [
               "node_modules/bulma/bulma.sass",
+              "node_modules/bulma-calendar/dist/css/bulma-calendar.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
               "src/styles/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/bulma-calendar/dist/js/bulma-calendar.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

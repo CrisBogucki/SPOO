@@ -6,7 +6,7 @@ export class DialogService {
 
   private subject = new Subject<any>();
 
-  private setConfirmation(title: string, message: string, yesFn: () => void, noFn: () => void): any {
+  private setDialogYesNo(title: string, message: string, yesFn: () => void, noFn: () => void): any {
     const that = this;
     this.subject.next({
       type: 'confirm',
@@ -23,9 +23,29 @@ export class DialogService {
     });
   }
 
-  confirmYesNo(title: string, message: string, yesFn: () => void, noFn: () => void): any {
-    this.setConfirmation(title, message, yesFn, noFn);
+
+  private setDialogOk(title: string, message: string, okFn: () => void): any {
+    const that = this;
+    this.subject.next({
+      type: 'dialogOk',
+      text: message,
+      title,
+      okFn(): any {
+        that.subject.next();
+        okFn();
+      }
+    });
   }
+
+  dialogYesNo(title: string, message: string, yesFn: () => void, noFn: () => void): any {
+    this.setDialogYesNo(title, message, yesFn, noFn);
+  }
+
+  dialogOk(title: string, message: string, okFn: () => void): any {
+    this.setDialogOk(title, message, okFn);
+  }
+
+
 
   getMessage(): Observable<any> {
     return this.subject.asObservable();
