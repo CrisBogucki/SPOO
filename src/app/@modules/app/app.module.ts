@@ -8,12 +8,19 @@ import {FinanceTypeComponent} from './finance/finance-type/finance-type.componen
 import {FinanceTypeValueComponent} from './finance/finance-type-value/finance-type-value.component';
 import {FormsModule} from '@angular/forms';
 import {SharedComponetsModule} from '../../@shared/components/shared.componets.module';
-import {DialogService} from '../../@shared/components/modal/dialog.service';
-import { FinanceInTimeComponent } from './finance/finance-in-time/finance-in-time.component';
-import { FinanceInConsumerComponent } from './finance/finance-in-consumer/finance-in-consumer.component';
+import {DialogService} from '../../@shared/components/dialog/dialog.service';
+import {FinanceInTimeComponent} from './finance/finance-in-time/finance-in-time.component';
+import {FinanceInConsumerComponent} from './finance/finance-in-consumer/finance-in-consumer.component';
 
 @NgModule({
-  declarations: [LayoutComponent, DashboardComponent, FinanceTypeComponent, FinanceTypeValueComponent, FinanceInTimeComponent, FinanceInConsumerComponent],
+  declarations: [
+    LayoutComponent,
+    DashboardComponent,
+    FinanceTypeComponent,
+    FinanceTypeValueComponent,
+    FinanceInTimeComponent,
+    FinanceInConsumerComponent
+  ],
   imports: [
     CommonModule,
     AppRoutingModule,

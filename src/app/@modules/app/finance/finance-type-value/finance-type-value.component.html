@@ -50,6 +50,7 @@
       <span class="tag" *ngIf="!item['editable']">{{item?.type?.code}} </span>
       <span *ngIf="!item['editable']"> {{item?.type?.name}}</span>
 
+      <shared-app-dropdown *ngIf="item['editable']" [selected]="" ] ></shared-app-dropdown>
       <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.type" required></span>
     </td>
     <td>

@@ -13,7 +13,7 @@ export class DialogService {
       text: message,
       title,
       yesFn(): any {
-        that.subject.next(); // This will close the modal
+        that.subject.next();
         yesFn();
       },
       noFn(): any {
@@ -30,6 +30,5 @@ export class DialogService {
   getMessage(): Observable<any> {
     return this.subject.asObservable();
   }
-
 }
 

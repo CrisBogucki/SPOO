@@ -10,6 +10,4 @@ export class FinanceType {
     this.name = name;
     this.description = description;
   }
-
-
 }

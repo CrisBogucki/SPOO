@@ -1,4 +1,4 @@
-<div *ngIf="message" [class]="!isActive ? 'modal is-active modal-fx-fadeInScale' : 'modal'">
+<div *ngIf="message" [class]="!isActive ? 'dialog is-active dialog-fx-fadeInScale' : 'dialog'">
   <div class="modal-background"></div>
   <div class="modal-content" *ngIf="message?.type == 'confirm'">
     <div class="box">
@@ -20,13 +20,11 @@
                 <span>TAK</span>
               </button>
             </div>
-
             <div class="column is-4">
               <button class="button is-small is-info is-outlined is-fullwidth" (click)="message.noFn(); isActive = false">
                 <span>NIE</span>
               </button>
             </div>
-
           </div>
         </div>
       </article>

@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {DialogService} from './dialog.service';
 
 @Component({
-  selector: 'app-modal',
+  // tslint:disable-next-line:component-selector
+  selector: 'shared-app-dialog',
   templateUrl: './dialog.component.html'
 })
 export class DialogComponent implements OnInit {
@@ -18,6 +19,5 @@ export class DialogComponent implements OnInit {
       this.message = message;
     });
   }
-
 }
 

@@ -3,7 +3,7 @@ import {FinanceTypeService} from '../../../../@core/services/finance-type.servic
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {FinanceType} from '../../../../@shared/models/finance-type.model';
-import {DialogService} from '../../../../@shared/components/modal/dialog.service';
+import {DialogService} from '../../../../@shared/components/dialog/dialog.service';
 
 @Component({
   selector: 'app-finance-type',
