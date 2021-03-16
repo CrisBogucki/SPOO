@@ -9,6 +9,7 @@ export class AppConfig {
     }
 
     appName = 'System Powiadomień o Opłatach';
+    appNameShort = 'SPoO';
     appDescript = 'Samorządowego Przedszkola Publicznego';
     appDescriptSubline1 = 'w Ośnie Lubuskim';
     appDescriptSubline2 = null;

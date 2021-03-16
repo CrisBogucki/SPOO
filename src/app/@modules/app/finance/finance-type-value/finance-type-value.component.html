@@ -50,17 +50,15 @@
             <span class="tag" *ngIf="!item['editable']">{{item?.type?.code}} </span>
             <span *ngIf="!item['editable']"> {{ item?.type?.name}}</span>
 
-            <span *ngIf="item['editable']">
-
-        <select class="input" [(ngModel)]="item.typeId" (change)="changeNowWhenUpdate(item.typeId)" >
-          <option *ngFor="let itemType of finanseType$"
-                  [ngValue]="itemType.id"
-                  [selected]="itemType.id === item.typeId">
-            {{ itemType.name}}
-          </option>
-        </select>
-
-      </span>
+            <div *ngIf="item['editable']" class="select">
+                <select [(ngModel)]="item.typeId" (change)="changeNowWhenUpdate(item.typeId)">
+                  <option *ngFor="let itemType of finanseType$"
+                          [ngValue]="itemType.id"
+                          [selected]="itemType.id === item.typeId">
+                    {{ itemType.name}}
+                  </option>
+                </select>
+            </div>
 
         </td>
         <td>
