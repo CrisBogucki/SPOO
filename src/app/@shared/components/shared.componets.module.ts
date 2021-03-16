@@ -2,19 +2,17 @@ import {NgModule} from '@angular/core';
 import {DialogComponent} from './dialog/dialog.component';
 import {DialogService} from './dialog/dialog.service';
 import {CommonModule} from '@angular/common';
-import {DropdownComponent} from './dropdown/dropdown.component';
 
 
 @NgModule({
   declarations: [
-    DialogComponent,
-    DropdownComponent
+    DialogComponent
   ],
   providers: [DialogService],
   imports: [
     CommonModule
   ],
-  exports: [DialogComponent, DropdownComponent]
+  exports: [DialogComponent]
 })
 export class SharedComponetsModule {
 }

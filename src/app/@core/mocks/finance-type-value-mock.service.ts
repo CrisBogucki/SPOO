@@ -68,7 +68,13 @@ export class FinanceTypesValueMockService implements HttpInterceptor {
         const body: FinanceTypeValue = request.body;
 
         let oldRow = this.VALUES.find(x => x.id === body.id);
-        oldRow = body;
+
+        oldRow.id = body.id;
+        oldRow.typeId = body.typeId;
+        oldRow.type = null;
+        oldRow.value = body.value;
+        oldRow.valFrom = body.valFrom;
+        oldRow.valTo = body.valTo;
         return this.request.ok(body);
       }
 

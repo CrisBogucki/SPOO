@@ -43,7 +43,7 @@
 
   <tbody>
 
-  <tr *ngFor="let item of finanseType$ | async; let editable = false; index as i; trackBy: trackByFn">
+  <tr *ngFor="let item of finanseType$ | async; index as i; trackBy: trackByFn">
     <th>{{i + 1}}</th>
     <td>
       <span class="tag" *ngIf="!item['editable']">{{item.code}}</span>

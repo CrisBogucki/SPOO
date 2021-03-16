@@ -8,68 +8,85 @@ import {FinanceTypeValue} from '../../../../@shared/models/finance-type-value.mo
 import {FinanceTypeService} from '../../../../@core/services/finance-type.service';
 
 @Component({
-  selector: 'app-finance-type-value',
-  templateUrl: './finance-type-value.component.html'
+    selector: 'app-finance-type-value',
+    templateUrl: './finance-type-value.component.html'
 })
 export class FinanceTypeValueComponent implements OnInit {
 
-  finanseTypeValue$: Observable<Array<FinanceTypeValue>>;
-  finanseType$: Array<FinanceType>;
+    finanseTypeValue$: Observable<Array<FinanceTypeValue>>;
+    finanseType$: Array<FinanceType>;
 
-  constructor(private financeTypeValueService: FinanceTypeValueService,
-              private financeTypeService: FinanceTypeService,
-              private dialogService: DialogService) {
-  }
-
-  ngOnInit() {
-    this.get();
-  }
-
-  onRefresh() {
-    this.get();
-  }
-
-  onAddRow() {
-    this.financeTypeValueService.add().subscribe();
-  }
-
-  onUpdateRow(item: FinanceTypeValue) {
-    this.financeTypeValueService.update(item).subscribe();
-  }
-
-  onRemoveRow(item: FinanceTypeValue) {
-    this.dialogService.dialogYesNo('Usunąć', 'Czy usunąć rekord?',
-      () => {
-        this.financeTypeValueService.remove(item).subscribe();
-      },
-      () => {
-      });
-  }
-
-  onCancelAndRemoveRow(item: FinanceTypeValue) {
-    if (item['editableWithOutRemove'] === true) {
-      item.editable = false;
-    } else {
-      this.financeTypeValueService.remove(item).subscribe();
+    constructor(private financeTypeValueService: FinanceTypeValueService,
+                private financeTypeService: FinanceTypeService,
+                private dialogService: DialogService) {
     }
-  }
 
+    ngOnInit() {
+        this.get();
+    }
 
-  get() {
-    this.finanseTypeValue$ = null;
-    this.financeTypeService.get().subscribe(financeType => {
-      this.finanseType$ = financeType;
-      this.finanseTypeValue$ = this.financeTypeValueService.get().pipe(map(req => {
-        for (let i = 0; req.length > i; i++) {
-          req[i].type = financeType.find(x => x.id === req[i].typeId);
+    onRefresh() {
+        this.get();
+    }
+
+    onAddRow() {
+        this.financeTypeValueService.add().subscribe();
+    }
+
+    onUpdateRow(item: FinanceTypeValue) {
+        console.log(item);
+        this.financeTypeValueService.update(item).subscribe();
+        this.finanseTypeValue$ = this.finanseTypeValue$.pipe(map(req => {
+            for (let i = 0; req.length > i; i++) {
+                req[i].type = this.finanseType$.find(x => x.id === req[i].typeId);
+            }
+            return req;
+        }));
+    }
+
+    onRemoveRow(item: FinanceTypeValue) {
+        this.dialogService.dialogYesNo('Usunąć', 'Czy usunąć rekord?',
+            () => {
+                this.financeTypeValueService.remove(item).subscribe();
+            },
+            () => {
+            });
+    }
+
+    onCancelAndRemoveRow(item: FinanceTypeValue) {
+        if (item['editableWithOutRemove'] === true) {
+            item.editable = false;
+        } else {
+            this.financeTypeValueService.remove(item).subscribe();
         }
-        return req;
-      }));
-    });
-  }
+    }
 
-  trackByFn(index, item) {
-    return index;
-  }
 
+    get() {
+        this.finanseTypeValue$ = null;
+        this.financeTypeService.get().subscribe(financeType => {
+            this.finanseType$ = financeType;
+            this.finanseTypeValue$ = this.financeTypeValueService.get().pipe(map(req => {
+                for (let i = 0; req.length > i; i++) {
+                    req[i].type = financeType.find(x => x.id === req[i].typeId);
+                }
+                return req;
+            }));
+        });
+    }
+
+    trackByFn(index, item) {
+        return index;
+    }
+
+    changeNowWhenUpdate(typeId: number) {
+        this.finanseTypeValue$.pipe(map(req => {
+            for (let i = 0; req.length > i; i++) {
+                if (req[i].typeId === typeId) {
+                    req[i].type = this.finanseType$.find(x => x.id === typeId);
+                }
+            }
+            return req;
+        }));
+    }
 }
