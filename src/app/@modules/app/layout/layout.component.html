@@ -14,27 +14,24 @@
   </div>
   <div id="navbarBasicExample" class="navbar-menu" #navMenu>
     <div class="navbar-start">
-      <a class="navbar-item">Start</a>
 
-      <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-item" href="#">
+        <span class="is-size-6">{{ appConfig.appName }}</span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable is-hidden-desktop">
         <a class="navbar-link">
-          Płatności
+          Menu
         </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
+        <div class="navbar-dropdown" (click)="toggleNavbar()">
+          <a class="navbar-item" routerLinkActive="is-active" routerLink="./dashboard">Pulpit</a>
           <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
+          <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a>
+          <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość opłaty </a>
+          <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" routerLinkActive="is-active" routerLink="./access-adm">Dostęp pracowników </a>
+          <a class="navbar-item" routerLinkActive="is-active" routerLink="./access-usr">Dostęp rodziców</a>
         </div>
       </div>
     </div>
