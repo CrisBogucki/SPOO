@@ -70,17 +70,17 @@ export class AuthorizationMockService implements HttpInterceptor {
     }
 
     sendMail() {
-        Email.send({
-            Host: 'smtp.elasticemail.com',
-            Username: 'fx57@o2.pl',
-            Password: 'soop11$K',
-            To: 'fx57@o2.pl',
-            From: 'fx57@o2.pl',
-            Subject: 'Temat',
-            Body: `<i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>{this.model.name} <br /> <b>Email: </b>{this.model.email}<br /> <b>Subject: </b>{this.model.subject}<br /> <b>Message:</b> <br /> {this.model.message} <br><br> <b>~End of Message.~</b> `
-        }).then(message => {
-            alert(message);
-        });
+        // Email.send({
+        //     Host: 'smtp.elasticemail.com',
+        //     Username: 'fx57@o2.pl',
+        //     Password: 'soop11$K',
+        //     To: 'fx57@o2.pl',
+        //     From: 'fx57@o2.pl',
+        //     Subject: 'Temat',
+        //     Body: `<i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>{this.model.name} <br /> <b>Email: </b>{this.model.email}<br /> <b>Subject: </b>{this.model.subject}<br /> <b>Message:</b> <br /> {this.model.message} <br><br> <b>~End of Message.~</b> `
+        // }).then(message => {
+        //     alert(message);
+        // });
 
     }
 }
