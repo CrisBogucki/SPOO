@@ -1,83 +1,90 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
+    <div class="navbar-brand">
 
-    <a class="navbar-item" href="#">
-      <img src="./assets/logo.png" />
-      <span class="is-size-5 has-text-weight-bold">{{ appConfig.appNameShort }}</span>
-    </a>
-    <a (click)="toggleNavbar()" role="button" #navBurger class="navbar-burger burger" aria-label="menu"
-       aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div id="navbarBasicExample" class="navbar-menu" #navMenu>
-    <div class="navbar-start">
-
-      <a class="navbar-item" href="#">
-        <span class="is-size-6">{{ appConfig.appName }}</span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable is-hidden-desktop">
-        <a class="navbar-link">
-          Menu
+        <a class="navbar-item" href="#">
+            <img src="./assets/logo.png"/>
+            <span class="is-size-5 has-text-weight-bold">{{ appConfig.appNameShort }}</span>
         </a>
-        <div class="navbar-dropdown" (click)="toggleNavbar()">
-          <a class="navbar-item" routerLinkActive="is-active" routerLink="./dashboard">Pulpit</a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a>
-          <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość opłaty </a>
-          <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" routerLinkActive="is-active" routerLink="./access-adm">Dostęp pracowników </a>
-          <a class="navbar-item" routerLinkActive="is-active" routerLink="./access-usr">Dostęp rodziców</a>
-        </div>
-      </div>
+        <a (click)="toggleNavbar()" role="button" #navBurger class="navbar-burger burger" aria-label="menu"
+           aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </div>
+    <div id="navbarBasicExample" class="navbar-menu" #navMenu>
+        <div class="navbar-start">
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <span style="padding-right: 15px;">Witaj <b style="font-weight: bold">{{ user.firstName }} {{ user.lastName }}</b></span>
-        <div class="buttons">
-          <a id="layout-logout" class="button is-light" [routerLink]="['./../account/logout']">
-            Wyloguj
-          </a>
+            <a class="navbar-item" href="#">
+                <span class="is-size-6">{{ appConfig.appName }}</span>
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable is-hidden-desktop">
+                <a class="navbar-link">
+                    Menu
+                </a>
+                <div class="navbar-dropdown" (click)="toggleNavbar()">
+                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./dashboard">Pulpit</a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a>
+                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość
+                        opłaty </a>
+                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./access-adm">Rejestr uzytkowników </a>
+                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./access-usr">Rejestr konsumnetów</a>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <span style="padding-right: 15px;">Witaj <b
+                        style="font-weight: bold">{{ user.firstName }} {{ user.lastName }}</b></span>
+                <div class="buttons">
+                    <a class="button is-small  is-info" [routerLink]="['./../account/logout']" id="logout">
+                        <span class="icon">
+                          <i class="fa fa-user"></i>
+                        </span>
+                        <span>Wyloguj</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-
-  </div>
 </nav>
 
 <div class="columns is-fullheight">
-  <div class="column is-2 is-sidebar-menu is-hidden-mobile">
-    <aside class="menu">
+    <div class="column is-2 is-sidebar-menu is-hidden-mobile">
+        <aside class="menu">
 
-      <p class="menu-label">
-        Menu
-      </p>
-      <ul class="menu-list">
-        <li><a routerLinkActive="is-active" routerLink="./dashboard">Pulpit</a></li>
-        <li><a routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a></li>
-        <li><a routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość opłaty </a></li>
-        <li><a routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a></li>
-      </ul>
+            <p class="menu-label">
+                Menu
+            </p>
 
-      <p class="menu-label">
-        Dostęp
-      </p>
-      <ul class="menu-list">
-        <li><a>Pracowników</a></li>
-        <li><a>Rodziców</a></li>
-      </ul>
-    </aside>
-  </div>
-  <div class="column is-main-content padding">
-    <router-outlet></router-outlet>
-    <shared-app-dialog></shared-app-dialog>
-  </div>
+            <ul class="menu-list">
+                <li><a routerLinkActive="is-active" routerLink="./dashboard">Pulpit</a></li>
+                <li><a routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a></li>
+                <li><a routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość opłaty </a></li>
+                <li><a routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a></li>
+            </ul>
+
+            <p class="menu-label">
+                Rejestr
+            </p>
+
+            <ul class="menu-list">
+                <li><a>Użytkowników</a></li>
+                <li><a>Konsumentów</a></li>
+            </ul>
+
+        </aside>
+    </div>
+    <div class="column is-main-content padding">
+        <router-outlet></router-outlet>
+        <shared-app-dialog></shared-app-dialog>
+    </div>
 </div>
 
 

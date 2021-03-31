@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:4200',
   app_base_href: '/',
-  useLocalStorage: true
+  useLocalStorage: true,
+
 };
 
 /*

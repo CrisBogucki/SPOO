@@ -11,7 +11,7 @@
 
 <p class="buttons">
     <button
-            [class]="(finanseTypeValue$ | async) !== null ? 'button is-small is-info is-outlined' : 'button is-small is-info is-outlined is-loading' "
+            [class]="(finanseTypeValue$ | async) !== null ? 'button is-small  is-info is-outlined' : 'button is-small  is-info is-outlined is-loading' "
             (click)="onRefresh()">
     <span class="icon">
       <i class="fa fa-refresh"></i>
@@ -19,7 +19,7 @@
         <span>Odśwież</span>
     </button>
 
-    <button class="button is-small is-info is-outlined"
+    <button class="button is-small  is-info is-outlined"
             (click)="onAddRow()">
     <span class="icon">
       <i class="fa fa-plus"></i>
@@ -83,7 +83,7 @@
         <td>
 
             <p class="buttons">
-                <button *ngIf="item['editable']" class="button is-small is-info"
+                <button *ngIf="item['editable']" class="button is-small  is-info"
                         (click)="item['editable']=null; onUpdateRow(item);">
           <span class="icon">
             <i class="fa fa-save"></i>
@@ -91,12 +91,12 @@
                     <span>Zapisz</span>
                 </button>
 
-                <button *ngIf="item['editable']" class="button is-small is-info is-outlined"
+                <button *ngIf="item['editable']" class="button is-small  is-info is-outlined"
                         (click)="onCancelAndRemoveRow(item)">
                     <span>Anuluj</span>
                 </button>
 
-                <button *ngIf="!item['editable'] " class="button is-small is-info is-outlined"
+                <button *ngIf="!item['editable'] " class="button is-small  is-info is-outlined"
                         (click)="item['editable']=true; item['editableWithOutRemove']=true">
           <span class="icon">
             <i class="fa fa-pencil"></i>
@@ -104,7 +104,7 @@
                     <span>Edytuj</span>
                 </button>
 
-                <button *ngIf="!item['editable']" class="button is-small is-danger is-outlined"
+                <button *ngIf="!item['editable']" class="button is-small  is-danger is-outlined"
                         (click)="onRemoveRow(item)">
           <span class="icon">
             <i class="fa fa-times"></i>
