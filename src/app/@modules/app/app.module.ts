@@ -11,23 +11,27 @@ import {SharedComponetsModule} from '../../@shared/components/shared.componets.m
 import {DialogService} from '../../@shared/components/dialog/dialog.service';
 import {FinanceInTimeComponent} from './finance/finance-in-time/finance-in-time.component';
 import {FinanceInConsumerComponent} from './finance/finance-in-consumer/finance-in-consumer.component';
+import {UsersComponent} from './users/users/users.component';
+import {ConsumersComponent} from './users/consumers/consumers.component';
 
 @NgModule({
-  declarations: [
-    LayoutComponent,
-    DashboardComponent,
-    FinanceTypeComponent,
-    FinanceTypeValueComponent,
-    FinanceInTimeComponent,
-    FinanceInConsumerComponent
-  ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    FormsModule,
-    SharedComponetsModule
-  ],
-  providers: [DialogService]
+    declarations: [
+        LayoutComponent,
+        DashboardComponent,
+        FinanceTypeComponent,
+        FinanceTypeValueComponent,
+        FinanceInTimeComponent,
+        FinanceInConsumerComponent,
+        UsersComponent,
+        ConsumersComponent
+    ],
+    imports: [
+        CommonModule,
+        AppRoutingModule,
+        FormsModule,
+        SharedComponetsModule
+    ],
+    providers: [DialogService]
 })
 export class AppModule {
 }

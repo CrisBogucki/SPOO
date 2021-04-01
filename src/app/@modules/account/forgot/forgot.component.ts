@@ -3,6 +3,7 @@ import {AppConfig} from '../../../@config/app.config';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../../../@core/services/authentication.service';
+import {EmailService} from '../../../@core/services/email.service';
 
 @Component({
     selector: 'app-logout',
@@ -26,7 +27,7 @@ export class ForgotComponent implements OnInit, AfterViewInit {
 
     constructor(
         @Inject(AppConfig) appConfig,
-        authenticationService: AuthenticationService) {
+        authenticationService: AuthenticationService, private emailService: EmailService) {
         this.appConfig = appConfig;
         this.authenticationService = authenticationService;
         this.errorMessage = null;
@@ -40,6 +41,7 @@ export class ForgotComponent implements OnInit, AfterViewInit {
     }
 
     onForgotSubmit() {
+        this.emailService.send();
         this.isSubmit = true;
         this.errorMessage = null;
         this.authenticationService.forgot(this.forgotForm.get('username').value)

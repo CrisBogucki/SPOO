@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SessionConfig} from './@config/session.config';
 import {SessionService} from './@core/services/session.service';
+import {EmailService} from './@core/services/email.service';
 import {AuthorizationMockService, FinanceTypesMockService, FinanceTypesValueMockService, RequestMethodService} from './@core/mocks/mocks';
 
 
@@ -22,7 +23,7 @@ import {AuthorizationMockService, FinanceTypesMockService, FinanceTypesValueMock
     AppComponent,
   ],
   providers: [
-    AppConfig, SessionConfig, SessionService,
+    AppConfig, SessionConfig, SessionService, EmailService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpJwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true},
     {provide: LocationStrategy, useClass: HashLocationStrategy},
