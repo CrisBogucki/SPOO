@@ -9,15 +9,11 @@ import {RequestMethodService} from './request-method.service';
 // @ts-ignore
 import accountJson from './data-seed/account.json';
 
-import './../../../assets/libs/smtp.js';
-
-declare let Email: any;
 
 @Injectable()
 export class AuthorizationMockService implements HttpInterceptor {
 
     constructor(private request: RequestMethodService) {
-        this.sendMail();
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -39,7 +35,8 @@ export class AuthorizationMockService implements HttpInterceptor {
                     username: user.username,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    token: `fake-jwt-token`
+                    token: `fake-jwt-token`,
+                    admin: user.admin
                 });
             }
 
@@ -67,21 +64,6 @@ export class AuthorizationMockService implements HttpInterceptor {
             .pipe(materialize())
             .pipe(delay(500))
             .pipe(dematerialize());
-    }
-
-    sendMail() {
-        // Email.send({
-        //     Host: 'smtp.elasticemail.com',
-        //     Username: 'fx57@o2.pl',
-        //     Password: 'soop11$K',
-        //     To: 'fx57@o2.pl',
-        //     From: 'fx57@o2.pl',
-        //     Subject: 'Temat',
-        //     Body: `<i>This is sent as a feedback from my resume page.</i> <br/> <b>Name: </b>{this.model.name} <br /> <b>Email: </b>{this.model.email}<br /> <b>Subject: </b>{this.model.subject}<br /> <b>Message:</b> <br /> {this.model.message} <br><br> <b>~End of Message.~</b> `
-        // }).then(message => {
-        //     alert(message);
-        // });
-
     }
 }
 
