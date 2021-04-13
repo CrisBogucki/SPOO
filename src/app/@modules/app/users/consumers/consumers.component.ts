@@ -9,7 +9,7 @@ import dataJson from '../../../../@core/mocks/data-seed/consumers.json';
 })
 export class ConsumersComponent implements OnInit {
 
-  private items: Consumer[];
+  items: Consumer[];
 
   constructor() {
   }

@@ -27,16 +27,16 @@ import closedMonthsJson from '../../../../@core/mocks/data-seed/closed-months.js
 })
 export class FinanceInTimeComponent implements OnInit {
 
-    private items: Finance[];
-    private financeValues: FinanceValue[];
-    private financeTypeValues: FinanceTypeValue[];
-    private closedMonths: Array<string>;
-    private financeTypes: FinanceType[];
-    private consumers: Consumer[];
-    private dateFrom: Date;
-    private dateTo: Date;
+    items: Finance[];
+    financeValues: FinanceValue[];
+    financeTypeValues: FinanceTypeValue[];
+    closedMonths: Array<string>;
+    financeTypes: FinanceType[];
+    consumers: Consumer[];
+    dateFrom: Date;
+    dateTo: Date;
 
-    private dates;
+    dates;
 
     constructor(private dialogService: DialogService) {
         this.dates = [];

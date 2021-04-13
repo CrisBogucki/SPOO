@@ -9,7 +9,7 @@ import accountJson from '../../../../@core/mocks/data-seed/account.json';
 })
 export class UsersComponent implements OnInit {
 
-    private items: User[];
+    items: User[];
 
     constructor() {
     }
