@@ -3,19 +3,19 @@
     "id": 0,
     "username": "user1",
     "password": "user1",
-    "firstName": "Chris",
-    "lastName": "Ferguson",
+    "firstName": "Jakub",
+    "lastName": "Doskonały",
     "admin": false,
-    "email": "chris.ferguson@gmail.com"
+    "email": "jakub.Ddoskonaly@gmail.com"
   },
   {
     "id": 2,
     "username": "user2",
     "password": "user2",
-    "firstName": "Maya",
-    "lastName": "Jobs",
+    "firstName": "Anna",
+    "lastName": "Nowak",
     "admin": false,
-    "email": "maya.jobs@gmail.com"
+    "email": "anna.nowak@gmail.com"
   },
   {
     "id": 1,
