@@ -7,7 +7,7 @@ import {RequestMethodService} from './request-method.service';
 import {FinanceType} from '../../@shared/models/finance-type.model';
 
 // @ts-ignore
-import financialTypeJson from './data-seed/financial-type.json';
+import financialTypeJson from './data-seed/finance-type.json';
 
 @Injectable()
 export class FinanceTypesMockService implements HttpInterceptor {

@@ -5,7 +5,6 @@ import {Observable} from 'rxjs';
 import {FinanceType} from '../../../../@shared/models/finance-type.model';
 import {FinanceTypeValueService} from '../../../../@core/services/finance-type-value.service';
 import {DialogService} from '../../../../@shared/components/dialog/dialog.service';
-import {FinanceTypeValue} from "../../../../@shared/models/finance-type-value.model";
 
 @Component({
     selector: 'app-finance-type',

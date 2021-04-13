@@ -61,9 +61,15 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         this.authenticationService.login(this.loginForm.get('username').value, this.loginForm.get('password').value)
             .pipe(first())
             .subscribe(
-                () => {
+                (data) => {
                     this.isSubmit = false;
-                    this.router.navigate([this.returnUrl]);
+                    console.log(data);
+                    if (data.admin) {
+                        this.router.navigate(['app/finance-in-time']);
+                    } else {
+                        this.router.navigate(['app/dashboard']);
+                    }
+
                 },
                 error => {
                     this.isSubmit = false;

@@ -1,0 +1,34 @@
+[
+  {
+    "id": 0,
+    "typeId": 0,
+    "value": "2.90",
+    "valFrom": "2018-09-01",
+    "valTo": "2020-08-31",
+    "editable": false
+  },
+  {
+    "id": 2,
+    "typeId": 0,
+    "value": "3.50",
+    "valFrom": "2020-09-01",
+    "valTo": "",
+    "editable": false
+  },
+  {
+    "id": 1,
+    "typeId": 1,
+    "value": "5.20",
+    "valFrom": "2020-09-01",
+    "valTo": "9999-12-31",
+    "editable": false
+  },
+  {
+    "id": 3,
+    "typeId": 1,
+    "value": "7.50",
+    "valFrom": "2020-09-01",
+    "valTo": "",
+    "editable": false
+  }
+]

@@ -6,11 +6,11 @@
 </nav>
 
 <h1 class="title">Konsumenci</h1>
-<h2 class="subtitle">Konsumenci systemu</h2>
+<h2 class="subtitle">Osoby fizyczne konsumujące usługi</h2>
 
 <p class="buttons">
     <button
-            [class]="(finanseType$ | async) !== null ? 'button is-small  is-info is-outlined' : 'button is-small  is-info is-outlined is-loading' "
+            [class]="items !== null ? 'button is-small  is-info is-outlined' : 'button is-small  is-info is-outlined is-loading' "
             (click)="onRefresh()">
     <span class="icon">
       <i class="fa fa-refresh"></i>
@@ -29,35 +29,35 @@
 
 
 <div class="is-clearfix"></div>
-<table class="table">
+<table class="table is-hidden-mobile">
     <thead>
     <tr>
         <th class="has-text-weight-bold" style="width: 40px">Lp.</th>
-        <th class="has-text-weight-bold">Kod</th>
-        <th class="has-text-weight-bold">Nazwa</th>
-        <th class="has-text-weight-bold">Opis</th>
+        <th class="has-text-weight-bold">Imię </th>
+        <th class="has-text-weight-bold">Nazwisko</th>
+        <th class="has-text-weight-bold">Rok</th>
         <th class="has-text-weight-bold" style="width: 180px">Akcje</th>
     </tr>
     </thead>
 
     <tbody>
-
-    <tr *ngFor="let item of finanseType$ | async; index as i; trackBy: trackByFn">
+    <tr *ngFor="let item of items; index as i">
         <th>{{i + 1}}</th>
         <td>
-            <span class="tag" *ngIf="!item['editable']">{{item.code}}</span>
-            <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.code" required></span>
-        </td>
-        <td>
-            <span *ngIf="!item['editable']">{{item.name}}</span>
-            <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.name" required></span>
-        </td>
-        <td>
-            <span *ngIf="!item['editable']">{{item.description}}</span>
-            <span *ngIf="item['editable']"><input [class]="item.description !== '' ? 'input' : 'input is-danger'"
-                                                  class="input" type="text" [(ngModel)]="item.description"
+            <span *ngIf="!item['editable']">{{item.firstName}}</span>
+            <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.firstName"
                                                   required></span>
         </td>
+        <td>
+            <span *ngIf="!item['editable']">{{item.lastName}}</span>
+            <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.lastName" required></span>
+        </td>
+
+        <td>
+            <span *ngIf="!item['editable']">{{item.year}}</span>
+            <span *ngIf="item['editable']"><input class="input" type="text" [(ngModel)]="item.year" required></span>
+        </td>
+
         <td>
 
             <p class="buttons">

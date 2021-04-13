@@ -41,6 +41,7 @@ export class AuthenticationService {
             user.username = username;
             SessionService.set(SessionConfig.currentUser, JSON.stringify(user));
             this.currentUserSubject.next(user);
+            return user;
           }
         })
       );

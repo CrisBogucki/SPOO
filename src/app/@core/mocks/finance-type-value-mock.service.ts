@@ -8,7 +8,7 @@ import {FinanceTypeValue} from '../../@shared/models/finance-type-value.model';
 import {FinanceTypesMockService} from './finance-type-mock.service';
 
 // @ts-ignore
-import financialTypeValueJson from './data-seed/financial-type-value.json';
+import financialTypeValueJson from './data-seed/finance-type-value.json';
 
 
 @Injectable()

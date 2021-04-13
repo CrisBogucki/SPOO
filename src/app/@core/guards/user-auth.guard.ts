@@ -9,7 +9,7 @@ import accountJson from '../mocks/data-seed/account.json';
 
 
 @Injectable({providedIn: 'root'})
-export class AllAuthGuard implements CanActivate {
+export class UserAuthGuard implements CanActivate {
 
   router: Router;
   authenticationService: AuthenticationService;
@@ -32,7 +32,7 @@ export class AllAuthGuard implements CanActivate {
   }
 
   isRegister(login: string): boolean {
-    const admins = this.users.find(x => x.username === login);
+    const admins = this.users.find(x => x.username === login && x.admin === false);
     return !!admins;
   }
 }

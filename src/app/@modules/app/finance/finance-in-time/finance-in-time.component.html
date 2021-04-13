@@ -1,1 +1,91 @@
-<p>finance-in-time works!</p>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+        <li><a routerLink="./../dashboard">Start</a></li>
+        <li class="is-active"><a>Płatności</a></li>
+    </ul>
+</nav>
+
+<h1 class="title">Płatności</h1>
+<h2 class="subtitle">Rozliczenia płatności</h2>
+
+<p class="buttons">
+    <button
+            [class]="consumers !== null ? 'button is-small is-info  is-outlined' : 'button is-small  is-info is-outlined is-loading' "
+            (click)="onRefresh()">
+        <span class="icon">
+          <i class="fa fa-refresh"></i>
+        </span>
+        <span>Odśwież</span>
+    </button>
+
+    <button class="button is-small is-info  is-outlined" (click)="onCloseMonth()">
+        <span class="icon">
+          <i class="fa fa-close"></i>
+        </span>
+        <span>Zamknij miesiąc</span>
+    </button>
+
+    <span style="width: 40px"></span>
+
+    <button class="button is-small is-info is-outlined" (click)="goNextWeek(-1)">
+        <span class="icon">
+          <i class="fa fa-angle-double-left"></i>
+        </span>
+        <span class="icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span>Od : {{dateFrom | date:'yyyy-MM-dd'}}</span>
+    </button>
+
+    <button class="button is-small is-info is-outlined" (click)="goNextWeek(1)">
+        <span class="icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span>Do : {{dateTo | date:'yyyy-MM-dd'}}</span>
+
+        <span class="icon">
+          <i class="fa fa-angle-double-right"></i>
+        </span>
+    </button>
+
+</p>
+
+
+<div class="is-clearfix"></div>
+<table class="table">
+    <thead>
+    <th class="has-text-weight-bold" style="width: 40px"><br>Lp.</th>
+    <th class="has-text-weight-bold" style="width: 40px"><br>Nazwisko</th>
+    <th class="has-text-weight-bold" style="width: 40px"><br>Imie</th>
+    <th class="has-text-weight-bold" style="width: 40px"><br>Rok</th>
+
+    <th *ngFor="let date of dates"
+        [class]="((date | date:'E') == 'Sun' || (date | date:'E') == 'Sat') ? 'has-background-light has-text-centered has-text-weight-light':'has-text-centered has-text-weight-light'">
+        {{date |  date:'yyyy-MM-dd'}} <br>
+        <span class="has-text-weight-light is-size-7 has-text-centered">{{getPolishDay((date | date:'E')) }}</span>
+    </th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let consumer of consumers; index as i">
+        <td style="width: 10px">{{i + 1}}</td>
+        <td style="width: 50px">
+            <span>{{consumer.lastName}} </span>
+        </td>
+        <td style="width: 50px">
+            <span>{{consumer.firstName}} </span>
+        </td>
+        <td style="width: 30px; border-right: 1px solid #eee">
+            <span class="tag">{{ consumer.year}}</span>
+        </td>
+        <td *ngFor="let date of dates"
+            [class]="((date | date:'E') == 'Sun' || (date | date:'E') == 'Sat') ? 'has-background-light has-text-grey-light has-text-centered is-size-7':'has-text-centered is-size-7' "
+            style="border-right: 1px solid #eee">
+            <div>
+                <i class="fa fa-pencil-square-o has-text-info is-outlined" style="float:left; cursor: pointer"
+                   *ngIf="!isClosed(date)"></i>
+                {{ getFinaceValue(consumer, date)}}
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>

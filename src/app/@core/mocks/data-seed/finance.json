@@ -1,0 +1,49 @@
+[
+  {
+    "idConsumer": 0,
+    "date": "2021-04-19",
+    "financeValue": [0, 1]
+  },
+  {
+    "idConsumer": 0,
+    "date": "2021-04-20",
+    "financeValue": [0, 1]
+  },
+  {
+    "idConsumer": 0,
+    "date": "2021-04-21",
+    "financeValue": [0, 1]
+  },
+  {
+    "idConsumer": 0,
+    "date": "2021-04-22",
+    "financeValue": [0, 1]
+  },
+  {
+    "idConsumer": 0,
+    "date": "2021-04-23",
+    "financeValue": [0, 1]
+  },
+
+  {
+    "idConsumer": 0,
+    "date": "2021-05-10",
+    "financeValue": [0, 1]
+  },
+  {
+    "idConsumer": 0,
+    "date": "2021-05-11",
+    "financeValue": [0, 1]
+  },
+  {
+    "idConsumer": 0,
+    "date": "2021-05-12",
+    "financeValue": [0, 1]
+  },
+  {
+    "idConsumer": 1,
+    "date": "2021-05-12",
+    "financeValue": [0, 1]
+  }
+]
+

@@ -24,16 +24,16 @@
                     Menu
                 </a>
                 <div class="navbar-dropdown" (click)="toggleNavbar()">
-                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./dashboard">Pulpit</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a>
-                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość
+                    <a *ngIf="!user.admin" class="navbar-item" routerLinkActive="is-active" routerLink="./dashboard">Moje płatności</a>
+                    <hr *ngIf="user.admin" class="navbar-divider">
+                    <a *ngIf="user.admin" class="navbar-item" routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a>
+                    <a *ngIf="user.admin" class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość
                         opłaty </a>
-                    <a class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a>
-                    <hr class="navbar-divider">
+                    <a *ngIf="user.admin" class="navbar-item" routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a>
+                    <hr *ngIf="user.admin" class="navbar-divider">
 
-                    <a class="navbar-item"  routerLinkActive="is-active" routerLink="./users">Rejestr użytkowników</a>
-                    <a class="navbar-item"  routerLinkActive="is-active" routerLink="./consumers">Rejestr konsumentów</a>
+                    <a *ngIf="user.admin" class="navbar-item"  routerLinkActive="is-active" routerLink="./users">Rejestr użytkowników</a>
+                    <a *ngIf="user.admin" class="navbar-item"  routerLinkActive="is-active" routerLink="./consumers">Rejestr konsumentów</a>
                 </div>
             </div>
         </div>
@@ -65,17 +65,17 @@
             </p>
 
             <ul class="menu-list">
-                <li><a routerLinkActive="is-active" routerLink="./dashboard">Pulpit</a></li>
-                <li><a routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a></li>
-                <li><a routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość opłaty </a></li>
-                <li><a routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a></li>
+                <li *ngIf="!user.admin"><a routerLinkActive="is-active" routerLink="./dashboard">Moje płatności</a></li>
+                <li *ngIf="user.admin"><a routerLinkActive="is-active" routerLink="./finance-in-time">Płatności</a></li>
+                <li *ngIf="user.admin"><a routerLinkActive="is-active" routerLink="./finance-type-value">Wysokość opłaty </a></li>
+                <li *ngIf="user.admin"><a routerLinkActive="is-active" routerLink="./finance-type">Typ opłaty</a></li>
             </ul>
 
-            <p class="menu-label">
+            <p class="menu-label" *ngIf="user.admin">
                 Rejestr
             </p>
 
-            <ul class="menu-list">
+            <ul class="menu-list" *ngIf="user.admin">
                 <li><a routerLinkActive="is-active" routerLink="./users">Użytkowników</a></li>
                 <li><a routerLinkActive="is-active" routerLink="./consumers">Konsumentów</a></li>
             </ul>

@@ -8,20 +8,22 @@ import {FinanceInTimeComponent} from './finance/finance-in-time/finance-in-time.
 import {FinanceInConsumerComponent} from './finance/finance-in-consumer/finance-in-consumer.component';
 import {UsersComponent} from './users/users/users.component';
 import {ConsumersComponent} from './users/consumers/consumers.component';
+import {UserAuthGuard} from '../../@core/guards/user-auth.guard';
+import {AdminAuthGuard} from '../../@core/guards/admin-auth.guard';
 
 const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children:
             [
-                {path: 'dashboard', component: DashboardComponent},
-                {path: 'finance-type', component: FinanceTypeComponent},
-                {path: 'finance-type-value', component: FinanceTypeValueComponent},
-                {path: 'finance-in-time', component: FinanceInTimeComponent},
-                {path: 'finance-in-consumer/id', component: FinanceInConsumerComponent},
-                {path: 'users', component: UsersComponent},
-                {path: 'consumers', component: ConsumersComponent},
-                {path: '', redirectTo: 'dashboard'}
+                {path: 'dashboard', component: DashboardComponent, canActivate: [UserAuthGuard]},
+                {path: 'finance-type', component: FinanceTypeComponent, canActivate: [AdminAuthGuard]},
+                {path: 'finance-type-value', component: FinanceTypeValueComponent, canActivate: [AdminAuthGuard]},
+                {path: 'finance-in-time', component: FinanceInTimeComponent, canActivate: [AdminAuthGuard]},
+                {path: 'finance-in-consumer/id', component: FinanceInConsumerComponent, canActivate: [AdminAuthGuard]},
+                {path: 'users', component: UsersComponent, canActivate: [AdminAuthGuard]},
+                {path: 'consumers', component: ConsumersComponent, canActivate: [AdminAuthGuard]},
+                {path: '', redirectTo: 'dashboard', canActivate: [UserAuthGuard]}
             ]
     }
 ];

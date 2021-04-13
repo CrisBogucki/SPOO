@@ -1,0 +1,16 @@
+[
+  {
+    "id": 0,
+    "parentId": 0,
+    "firstName": "Ola",
+    "lastName": "Nowak",
+    "year": "rok 1 - misie"
+  },
+  {
+    "id": 1,
+    "parentId": 2,
+    "firstName": "Kamil",
+    "lastName": "Jobs",
+    "year": "rok 1 - misie"
+  }
+]
