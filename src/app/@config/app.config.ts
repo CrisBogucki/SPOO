@@ -8,12 +8,20 @@ export class AppConfig {
         document.title = this.appName;
     }
 
+    accountNumber = '72150021524284751375746041';
+    street = 'Kolorowa 7';
+    city = 'Gorzów Wielkopolski';
+    zipCode = '66-400';
+
     appName = 'System Powiadomień o Opłatach';
     appNameShort = 'SPoO';
-    appDescript = 'Samorządowego Przedszkola Publicznego';
-    appDescriptSubline1 = 'w Ośnie Lubuskim';
+    appDescript = 'Samorządowe Przedszkole Publiczne';
+    appDescriptSubline1 = `ul.${this.street}, ${this.zipCode} ${this.city}`;
     appDescriptSubline2 = null;
     appVersion = `wersja ${packageJson.version}`;
-    appCompany = 'Asseco Poland';
+    appCompany = 'CRIS';
+
+
+
 
 }

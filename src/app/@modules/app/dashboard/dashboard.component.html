@@ -25,13 +25,16 @@
 
         <div class="content">
 
-            Nazwa: Samorządowe Przedszkole<br>
-            Nr rachunku bankowego: <b>82103018694334584084003749</b><br>
+            <span class="is-size-3-desktop is-size-5-mobile">{{appConfig.appDescript}}</span>
             <br>
+            <br>
+            Nr rachunku bankowego <br><b class="is-size-4-desktop is-size-6-mobile">82103018694334584084003749</b><br>
+            <br>
+
             Opłata za: Kwiecień 2021
             <br>
-            Ul. Wolności 45<br>
-            69-220 Ośno Lubuskie
+            ul.{{ appConfig.street}}<br>
+            {{ appConfig.zipCode}} {{ appConfig.city}}
         </div>
     </div>
 
