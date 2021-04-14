@@ -4,11 +4,28 @@
         <div class="media">
             <div class="media-left">
                 <p class="image is-size-4">
-                    Do zapłaty 45,56zł
+                    Do zapłaty {{forPaid}} zł
                 </p>
             </div>
-
         </div>
+        <table class="table">
+            <thead>
+            <th>Dzień</th>
+            <th>Składnik</th>
+            <th>Kwota</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let paid of paids">
+                <td>{{paid.day}}</td>
+                <td>{{paid.name}}</td>
+                <td>{{paid.val}}zł</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <th colspan="2" style="text-align: right">Razem :</th>
+            <th>{{forPaid}}zł</th>
+            </tfoot>
+        </table>
         <div class="media">
             <div class="media-left">
                 <figure class="image is-48x48 is-size-1">
@@ -19,10 +36,7 @@
                 <p class="title is-4">{{ user.firstName }} {{ user.lastName }}</p>
                 <p class="subtitle is-6">@{{ user.username }}</p>
             </div>
-
-
         </div>
-
         <div class="content">
 
             <span class="is-size-3-desktop is-size-5-mobile">{{appConfig.appDescript}}</span>

@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {AppConfig} from './@config/app.config';
-import {Storage} from './@core/mocks/storage';
 
 @Component({
     selector: 'app-root',
@@ -12,7 +11,6 @@ export class AppComponent implements OnInit {
 
     constructor(@Inject(AppConfig) appConfig) {
         this.appConfig = appConfig;
-        Storage.init();
     }
 
 

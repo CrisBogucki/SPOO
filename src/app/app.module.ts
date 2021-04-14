@@ -16,6 +16,7 @@ import {SessionConfig} from './@config/session.config';
 import {SessionService} from './@core/services/session.service';
 import {EmailService} from './@core/services/email.service';
 import {AuthorizationMockService, FinanceTypesMockService, FinanceTypesValueMockService, RequestMethodService} from './@core/mocks/mocks';
+import {Storage} from "./@core/mocks/storage";
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {AuthorizationMockService, FinanceTypesMockService, FinanceTypesValueMock
     AppComponent,
   ],
   providers: [
-    AppConfig, SessionConfig, SessionService, EmailService,
+    AppConfig, SessionConfig, SessionService, EmailService, Storage,
     {provide: HTTP_INTERCEPTORS, useClass: HttpJwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true},
     {provide: LocationStrategy, useClass: HashLocationStrategy},
