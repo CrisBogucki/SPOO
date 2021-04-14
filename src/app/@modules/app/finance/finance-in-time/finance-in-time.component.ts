@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Consumer} from '../../../../@shared/models/consumers.model';
 import {FinanceType} from '../../../../@shared/models/finance-type.model';
-import {FinanceValue} from '../../../../@shared/models/finance-value.model';
+import {Finance} from '../../../../@shared/models/finance.model';
 import {FinanceTypeValue} from '../../../../@shared/models/finance-type-value.model';
 import {Tools} from '../../../../@shared/tools';
 import {DialogService} from '../../../../@shared/components/dialog/dialog.service';
@@ -26,7 +26,7 @@ import closedMonthsJson from '../../../../@core/mocks/data-seed/closed-months.js
 })
 export class FinanceInTimeComponent implements OnInit {
 
-    financeValues: FinanceValue[];
+    finances: Finance[];
     financeTypeValues: FinanceTypeValue[];
     closedMonths: Array<string>;
     financeTypes: FinanceType[];
@@ -42,7 +42,7 @@ export class FinanceInTimeComponent implements OnInit {
 
     ngOnInit() {
         this.consumers = consumersJson;
-        this.financeValues = financeJson;
+        this.finances = financeJson;
         this.financeTypeValues = financeTypeValueJson;
         this.financeTypes = financeTypeJson;
         this.closedMonths = closedMonthsJson;
@@ -72,7 +72,7 @@ export class FinanceInTimeComponent implements OnInit {
 
     getFinaceValue(consumer: Consumer, date: Date) {
 
-        const finVal = this.financeValues.find(x => x.date === date.toISOString().split('T')[0].toString()
+        const finVal = this.finances.find(x => x.date === date.toISOString().split('T')[0].toString()
             && x.idConsumer === consumer.id);
 
         if (finVal) {

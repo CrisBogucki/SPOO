@@ -42,4 +42,5 @@ import {AuthorizationMockService, FinanceTypesMockService, FinanceTypesValueMock
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

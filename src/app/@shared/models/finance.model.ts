@@ -1,7 +1,6 @@
 export class Finance {
-    id: number;
-    parentId: number;
-    firstName: string;
-    lastName: string;
-    year: string;
+    idConsumer: number;
+    date: string;
+    financeValue: Array<number>;
+    paid: boolean;
 }
