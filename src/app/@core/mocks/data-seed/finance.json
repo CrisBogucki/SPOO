@@ -6,7 +6,19 @@
     "paid": false
   },
   {
+    "idConsumer": 1,
+    "date": "2021-04-19",
+    "financeValue": [0, 1],
+    "paid": false
+  },
+  {
     "idConsumer": 0,
+    "date": "2021-04-20",
+    "financeValue": [0, 1],
+    "paid": false
+  },
+  {
+    "idConsumer": 1,
     "date": "2021-04-20",
     "financeValue": [0, 1],
     "paid": false
