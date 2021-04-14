@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Finance} from '../../../../@shared/models/finance.model';
 import {Consumer} from '../../../../@shared/models/consumers.model';
 import {FinanceType} from '../../../../@shared/models/finance-type.model';
 import {FinanceValue} from '../../../../@shared/models/finance-value.model';
@@ -27,7 +26,6 @@ import closedMonthsJson from '../../../../@core/mocks/data-seed/closed-months.js
 })
 export class FinanceInTimeComponent implements OnInit {
 
-    items: Finance[];
     financeValues: FinanceValue[];
     financeTypeValues: FinanceTypeValue[];
     closedMonths: Array<string>;
@@ -43,7 +41,6 @@ export class FinanceInTimeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.items = dataJson;
         this.consumers = consumersJson;
         this.financeValues = financeJson;
         this.financeTypeValues = financeTypeValueJson;
@@ -58,21 +55,7 @@ export class FinanceInTimeComponent implements OnInit {
 
     }
 
-    onAddRow() {
 
-    }
-
-    onUpdateRow(item: Finance) {
-
-    }
-
-    onCancelAndRemoveRow(item: Finance) {
-
-    }
-
-    onRemoveRow(item: Finance) {
-
-    }
 
     calcDate() {
         this.dates = [];
